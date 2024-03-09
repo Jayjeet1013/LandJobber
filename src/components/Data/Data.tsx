@@ -8,7 +8,7 @@ export const Data = [
         {
                 id:2,
                 companyName:"Wellfound",
-                link:"https://wellfound.com/jobs",
+                link:"https://wellfound.com/",
                 description:"job for remote and work from office"
         },
 ]
