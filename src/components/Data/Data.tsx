@@ -1,7 +1,7 @@
 export const Data = [
   {
     id: 1,
-    companyName: "remoteook",
+    companyName: "Remoteook",
     link: "https://remoteok.com/",
     description: "job for remote",
   },
@@ -33,7 +33,7 @@ export const Data = [
   },
   {
     id: 6,
-    companyName: "spinks",
+    companyName: "Spinks",
     link: "https://www.wearespinks.com/",
     description:
       "Connecting fast-growth organisations with exceptional talent.",
