@@ -4,8 +4,8 @@ import Link from "next/link";
 
 const Hero: React.FC = () => {
   return (
-    <div>
-      <div className="text-xl font-bold text-center mt-10 ">
+    <div className="pt-20 ">
+      <div className="text-xl font-bold text-center ">
         All job platforms are listed here:
       </div>
 

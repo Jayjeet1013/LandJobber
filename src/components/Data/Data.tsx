@@ -487,15 +487,15 @@ export const Data = [
     description: "Find your dream job now  ",
   },
   {
-        id: 79,
-        companyName: "Glassdoor",
-        link: "https://www.glassdoor.co.in/Job/index.htm",
-        description: "Find your your perfect job",
-      },
-      {
-        id: 80,
-        companyName: "Indeed",
-        link: "https://in.indeed.com/?from=gnav-homepage",
-        description: "Post your resume - It only takes a few seconds",
-      },
+    id: 79,
+    companyName: "Glassdoor",
+    link: "https://www.glassdoor.co.in/Job/index.htm",
+    description: "Find your your perfect job",
+  },
+  {
+    id: 80,
+    companyName: "Indeed",
+    link: "https://in.indeed.com/?from=gnav-homepage",
+    description: "Post your resume - It only takes a few seconds",
+  },
 ];

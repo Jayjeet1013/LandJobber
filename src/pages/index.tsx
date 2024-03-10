@@ -14,8 +14,8 @@ export default function Home() {
     
   <div>
       <Head>
-        <title>Jayjeet Portfolio</title>
-        <meta name="description" content="Portfolio of Jayjeet" />
+        <title>JobYard</title>
+        <meta name="description" content="JobYard" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/logo.png" />
         <script
