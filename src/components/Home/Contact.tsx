@@ -389,7 +389,7 @@ const Connect = () => {
                       <>Submitting...</>
                     ) : (
                       <>
-                        Let's Connect
+                        Let&apos;s Connect
                      
                       </>
                     )}
