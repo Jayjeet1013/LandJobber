@@ -8,9 +8,7 @@ import React, { useState } from "react";
 const apiId = process.env.NEXT_PUBLIC_API_BASE_ID;
 const apiKey = process.env.NEXT_PUBLIC_API_KEY;
 
-const base = new Airtable({ apiKey }).base(
-  apiId as string
-);
+const base = new Airtable({ apiKey }).base(apiId as string);
 
 const Footer: React.FC = () => {
   const [email, setEmail] = useState("");
@@ -179,7 +177,7 @@ const Footer: React.FC = () => {
                   onChange={(e) => setEmail(e.target.value)}
                   required
                 />
-                <button  className="btn">
+                <button type="submit"  className="btn">
                   {loading ? "Submitting..." : "Subscribe"}
                 </button>
               </Stack>
