@@ -105,8 +105,20 @@ const Footer = () => {
                     Connect Us
                   </h3>
                   <div className="flex space-x-5">
-                    <a href="https://twitter.com/HashstoneGroup" target="_blank"> <img src="/twitter.svg" /></a>
-                    <a href="https://www.linkedin.com/company/asvaventures/" target="_blank"> <img src="/linkedin.svg" /></a>
+                    <a
+                      href="https://twitter.com/HashstoneGroup"
+                      target="_blank"
+                    >
+                      {" "}
+                      <img src="/twitter.svg" />
+                    </a>
+                    <a
+                      href="https://www.linkedin.com/company/asvaventures/"
+                      target="_blank"
+                    >
+                      {" "}
+                      <img src="/linkedin.svg" />
+                    </a>
                   </div>
                   <h3 className="text-[14px] font-bold mb-2 mt-6 leading-7">
                     Email:
@@ -129,7 +141,7 @@ const Footer = () => {
                 </div>
                 <Flex gap={0} border={"1px solid #7A7A7A"} overflow={"hidden"}>
                   <Input
-                    textColor={'#D9D9D9A3'}
+                    textColor={"#D9D9D9A3"}
                     placeholder="Enter your email"
                     rounded={0}
                     fontSize={16}

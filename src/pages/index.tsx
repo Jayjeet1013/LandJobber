@@ -1,9 +1,7 @@
 import Hero from "@/components/Home/Hero";
-import Head from "next/head"
+import Head from "next/head";
 import { useEffect } from "react";
 import ReactGA from "react-ga";
-
-
 
 export default function Home() {
   useEffect(() => {
@@ -11,8 +9,7 @@ export default function Home() {
     ReactGA.pageview(window.location.pathname + window.location.search);
   }, []);
   return (
-    
-  <div>
+    <div>
       <Head>
         <title>JobYard</title>
         <meta name="description" content="JobYard" />
@@ -36,12 +33,9 @@ export default function Home() {
         />
       </Head>
 
-
-<div>
-<Hero/>
-</div>
-
-
-  </div>
+      <div>
+        <Hero />
+      </div>
+    </div>
   );
 }
