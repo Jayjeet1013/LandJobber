@@ -1,3 +1,4 @@
+import Connect from "@/components/Home/Contact";
 import Hero from "@/components/Home/Hero";
 import Head from "next/head";
 import { useEffect } from "react";
@@ -35,6 +36,7 @@ export default function Home() {
 
       <div>
         <Hero />
+        <Connect/>
       </div>
     </div>
   );

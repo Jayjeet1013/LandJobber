@@ -1,18 +1,39 @@
 import React, { useState } from "react";
-import { Data } from "../Data/Data"; // Assuming Data is exported as named export
+import { Data } from "../components/Data/Data"; // Assuming Data is exported as named export
 import Link from "next/link";
 
-const Hero: React.FC = () => {
+const JobPlatform = () => {
+  const [searchTerm, setSearchTerm] = useState<string>("");
+
+  // Function to handle search input change
+  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchTerm(event.target.value);
+  };
+
+  // Filter data based on search term
+  const filteredData = Data.filter((item) =>
+    item.companyName.toLowerCase().includes(searchTerm.toLowerCase())
+  );
   return (
     <div className="py-24  ">
       <div className="flex gap-56 justify-center items-center mb-12 ">
         <div className="text-xl font-bold text-center ">
           All job platforms are listed here:
         </div>
+
+        <div className="max-w-md  ">
+          <input
+            type="text"
+            placeholder="Search Company Name..."
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
+            value={searchTerm}
+            onChange={handleSearchChange}
+          />
+        </div>
       </div>
 
       <div className="mt-4 flex flex-wrap gap-16 items-center justify-center">
-        {Data.slice(2, 5).map((item) => (
+        {filteredData.map((item) => (
           <div
             key={item.id}
             className="hover:scale-110 duration-200  p-5 h-56 bg-gray-400 w-72  rounded-lg  text-center "
@@ -40,4 +61,4 @@ const Hero: React.FC = () => {
   );
 };
 
-export default Hero;
+export default JobPlatform;

@@ -1,49 +1,64 @@
-import { Box, Button, Container, Flex, Input, Text } from "@chakra-ui/react";
+import { Box, Button, Center, Container, Flex, Input, Stack, Text, useToast } from "@chakra-ui/react";
+import Airtable from "airtable";
 import axios from "axios";
 import Link from "next/link";
 import React, { useState } from "react";
 
-const Footer = () => {
+
+const apiId = process.env.NEXT_PUBLIC_API_BASE_ID;
+const apiKey = process.env.NEXT_PUBLIC_API_KEY;
+
+const base = new Airtable({ apiKey }).base(
+  apiId as string
+);
+
+const Footer: React.FC = () => {
   const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
+  const toast = useToast();
 
-  const handleSubscribe = () => {
+  const handleSubmit = async (e:React.FormEvent<HTMLFormElement>) => {
     setLoading(true);
-    // Step 3: Handle form submission
-    const regex =
-      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    e.preventDefault();
 
-    if (email === "" || !regex.test(String(email).toLowerCase())) {
-      setMessage("Please enter a valid email");
-      return;
-    }
-
-    const formData = new FormData();
-    formData.append("api_key", "AghazFUFk4uDrDUsquEg");
-    formData.append("email", email);
-    formData.append("list", "ThA5aF2Lf06cHT892osZxndQ");
-
-    axios
-      .post("https://sendy.asvalabs.com/subscribe", formData, {
-        headers: { "Content-type": "application/x-www-form-urlencoded" },
-      })
-      .then((response) => {
-        const resData = response.data;
-        if (resData.includes(`You're already subscribed!`)) {
-          setMessage(`You're already subscribed!`);
-        }
-        if (resData.includes(`You're subscribed!`)) {
-          setMessage(`You're subscribed!`);
-        }
-        setEmail("");
-        setLoading(false);
-      })
-      .catch((error) => {
-        setLoading(false);
-        setMessage("Something went wrong!");
+    try {
+      await base("jobyard").create([{ fields: { Email: email } }]);
+      toast({
+        position:'top',
+        
+        render: () => (
+          <Box
+            p={3}
+            bg="green"
+            border="2px solid green"
+            borderRadius="md"
+            color="white"
+            fontWeight={600}
+            textAlign="center"
+          >
+            <Text fontSize="lg">Success!</Text>
+            <Text>You have successfully subscribed.</Text>
+          </Box>
+        ),
+        status: "success",
+        duration: 3000,
+        isClosable: true,
       });
+      setEmail("");
+      setLoading(false);
+    } catch (error) {
+      toast({
+        position: 'top',
+        title: "Error",
+        description: "Something went wrong. Please try again later.",
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+      });
+      setLoading(false);
+    }
   };
+
   return (
     <Box bg={"#F7F7F7"}>
       <Container maxW={1300} pt={16}>
@@ -52,12 +67,7 @@ const Footer = () => {
             <div className="flex justify-between md:flex-row flex-col flex-wrap ">
               <div>
                 <Link href={"https://www.asvaventures.com/"} target="_blank">
-                  <img
-                    alt="Asva Ventures Logo"
-                    height="32"
-                    src="/logo.svg"
-                    width="130"
-                  />
+                 JobYard
                 </Link>
 
                 <p className="text-[14px] leading-6  text-[#111111] font-bold ">
@@ -89,7 +99,7 @@ const Footer = () => {
                     </h3>
                   </Link>
 
-                  {/* <ul className="space-y-1 leading-6 text-sm">
+                  <ul className="space-y-1 leading-6 text-sm">
                     <Link href={"/aboutus/#team"}>
                       {" "}
                       <li>Team</li>
@@ -98,7 +108,7 @@ const Footer = () => {
                       {" "}
                       <li>Insights & Research</li>
                     </Link>
-                  </ul> */}
+                  </ul>
                 </div>
                 <div>
                   <h3 className="text-[14px] leading-6 text-[#111111] font-bold mb-3">
@@ -110,14 +120,14 @@ const Footer = () => {
                       target="_blank"
                     >
                       {" "}
-                      <img src="/twitter.svg" />
+                  twitter
                     </a>
                     <a
                       href="https://www.linkedin.com/company/asvaventures/"
                       target="_blank"
                     >
                       {" "}
-                      <img src="/linkedin.svg" />
+                     linkedin
                     </a>
                   </div>
                   <h3 className="text-[14px] font-bold mb-2 mt-6 leading-7">
@@ -139,36 +149,43 @@ const Footer = () => {
                     Get the Latest Updates and Stay Informed!
                   </div>
                 </div>
-                <Flex gap={0} border={"1px solid #7A7A7A"} overflow={"hidden"}>
-                  <Input
-                    textColor={"#D9D9D9A3"}
-                    placeholder="Enter your email"
-                    rounded={0}
-                    fontSize={16}
-                    color={"black"}
-                    outline={"none"}
-                    border={"none"}
-                    focusBorderColor="transparent"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                  />
-                  <Button
-                    px={"24px"}
-                    py={"16px"}
-                    rounded={0}
-                    bg={"#888888"}
-                    color={"#1F1F1F"}
-                    fontFamily={"Autaut Grotesk-Trial"}
-                    fontWeight={400}
-                    onClick={handleSubscribe}
-                    _hover={{ bg: "#888888" }}
-                  >
-                    <img width={"30px"} src="/arr.svg" />
-                  </Button>
-                </Flex>
-                <Text color="#1F1F1F" pt={2} textAlign={"center"}>
-                  {message}
-                </Text>
+                <Box>
+          <Center>
+            <form style={{ background: "transparent" }} onSubmit={handleSubmit}>
+              <Stack
+                direction={{ base: "row", md: "row" }}
+                mb={{ base: "30px", md: "30px" }}
+                bg={"transparent"}
+                border="2px solid black"
+                rounded={"10px"}
+                justify="center"
+                gap={5}
+                p={2}
+                align={{ base: "dow", md: "initial" }}
+              >
+                <Input
+                  placeholder="Enter your email"
+                  bg={"transparent"}
+                  fontWeight="400"
+                  fontSize={{ base: "16px", md: "20px" }}
+                  px={{ base: "8px", md: "10px" }}
+                  py={{ base: "8px", md: "12px" }}
+                  type="email"
+                  value={email}
+                  outline="black"
+                  border="black"
+                  _placeholder={{ color: "black" }}
+                  boxShadow="none !important"
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                />
+                <button  className="btn">
+                  {loading ? "Submitting..." : "Subscribe"}
+                </button>
+              </Stack>
+            </form>
+          </Center>
+        </Box>
               </div>
             </div>
             <div className="flex  justify-center items-center mt-8 border-t pt-4">

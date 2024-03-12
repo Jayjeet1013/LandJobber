@@ -31,7 +31,7 @@ const Nav = () => {
           px={2}
           color="white"
         >
-          <Link href="/">JobYard</Link>
+          <Link href="/" className="text-[24px] font-semibold  " _hover={{ color: "yellow", textDecoration: "none" }}>JobYard</Link>
 
           <Flex
             color={"white"}
@@ -40,25 +40,19 @@ const Nav = () => {
             justifyContent="center"
             display={{ base: "none", md: "flex" }}
           >
-            <Link _hover={{ color: "yellow", textDecoration: "none" }}>
+            <Link href="/" _hover={{ color: "yellow", textDecoration: "none" }}>
               {" "}
               <Text>Home</Text>
             </Link>
-            <Link _hover={{ color: "yellow", textDecoration: "none" }}>
-              <Text>Pages</Text>
+            <Link href="/JobPlatform" _hover={{ color: "yellow", textDecoration: "none" }}>
+              <Text>JobsPlatform</Text>
             </Link>
-            <Link _hover={{ color: "yellow", textDecoration: "none" }}>
-              <Text>Use cases</Text>
-            </Link>
-            <Link _hover={{ color: "yellow", textDecoration: "none" }}>
-              <Text>Pricing</Text>
-            </Link>
+           
+          
             <Link _hover={{ color: "yellow", textDecoration: "none" }}>
               <Text>Contact</Text>
             </Link>
-            <Link _hover={{ color: "yellow", textDecoration: "none" }}>
-              <Text>Login</Text>
-            </Link>
+        
 
             <Box color={"yellow.800"}>
               <Button
