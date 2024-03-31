@@ -27,7 +27,7 @@ const Nav = () => {
           align="center"
           justify="space-between"
           wrap="wrap"
-          py="5px"
+          py="8px"
           px={2}
           color="white"
         >
@@ -49,11 +49,11 @@ const Nav = () => {
             </Link>
            
           
-            <Link _hover={{ color: "yellow", textDecoration: "none" }}>
+            <Link href="/#contact" _hover={{ color: "yellow", textDecoration: "none" }}>
               <Text>Contact</Text>
             </Link>
         
-
+{/* 
             <Box color={"yellow.800"}>
               <Button
                 p={6}
@@ -64,7 +64,7 @@ const Nav = () => {
               >
                 Get Started
               </Button>
-            </Box>
+            </Box> */}
           </Flex>
 
           <Box display={{ base: "flex", md: "none" }} onClick={toggleMenu}>

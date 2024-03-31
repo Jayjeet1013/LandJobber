@@ -87,7 +87,7 @@ const Connect = () => {
   };
 
   return (
-    <Box mb={100}>
+    <Box mb={100} id="contact">
       <Container maxW={1300} id="contact">
         <div className=" bg-white  ">
           <div className="  flex flex-col md:flex-row justify-center  gap-8 md:gap-20">

@@ -12,7 +12,7 @@ const Hero: React.FC = () => {
       </div>
 
       <div className="mt-4 flex flex-wrap gap-16 items-center justify-center">
-        {Data.slice(2, 5).map((item) => (
+        {Data.slice(2, 12).map((item) => (
           <div
             key={item.id}
             className="hover:scale-110 duration-200  p-5 h-56 bg-gray-400 w-72  rounded-lg  text-center "
