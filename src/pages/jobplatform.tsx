@@ -14,7 +14,7 @@ const JobPlatform = () => {
   );
   return (
     <div className="pb-24 pt-12  ">
-      <div className="flex gap-56 justify-center items-center mb-12 ">
+      <div className="md:flex-row flex-col flex gap-4 md:gap-56 justify-center  items-center mb-12 ">
         <div className="text-xl font-bold text-center ">
           All job platforms are listed here:
         </div>
