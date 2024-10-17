@@ -22,20 +22,24 @@ const Nav = () => {
         {/* lg+ */}
         <nav className="flex items-center justify-between h-16 lg:h-20">
           <div className="flex-shrink-0">
-            <Link href="/" title="LandJobber" className="text-[30px] shadow-lg hover:shadow-green-400 shadow-red-500 px-2 rounded-md font-semibold flex">
+            <Link
+              href="/"
+              title="LandJobber"
+              className="text-[30px] shadow-lg hover:shadow-green-400 shadow-red-500 px-2 rounded-md font-semibold flex"
+            >
               LandJobber
             </Link>
           </div>
 
           <button
             type="button"
-            className="inline-flex p-2 text-black transition-all duration-200 rounded-md lg:hidden focus:bg-gray-100 hover:bg-gray-100"
+            className="inline-flex  text-black rounded-md lg:hidden "
             onClick={toggleMenu}
           >
             {isMenuOpen ? (
-              <FiX className="w-6 h-6" />
+              <FiX className="w-8 h-8" />
             ) : (
-              <FiMenu className="w-6 h-6" />
+              <FiMenu className="w-8 h-8" />
             )}
           </button>
 
@@ -54,25 +58,28 @@ const Nav = () => {
 
         {/* xs to lg */}
         {isMenuOpen && (
-          <nav className="pt-4 pb-6 bg-white border border-gray-200 rounded-md shadow-md lg:hidden">
+          <nav className="pt-6  pb-6 bg-white border border-gray-200 rounded-md shadow-md lg:hidden">
             <div className="flow-root">
-              <div className="flex flex-col px-6 -my-2 space-y-1">
-                <Link href="#" className={styles.mobileLink} title="Features">
-                  Features
+              <div className="flex flex-col px-6 -my-2 space-y-3">
+                <Link href="/" className={styles.link} title="Features">
+                  Home
                 </Link>
-                <Link href="#" className={styles.mobileLink} title="Solutions">
-                  Solutions
+                <Link
+                  href="/jobplatform"
+                  className={styles.link}
+                  title="Solutions"
+                >
+                  JobPlatforms
                 </Link>
-                <Link href="#" className={styles.mobileLink} title="Resources">
-                  Resources
-                </Link>
-                <Link href="#" className={styles.mobileLink} title="Pricing">
-                  Pricing
+                <Link
+                  href="/careerpages"
+                  className={styles.link}
+                  title="Resources"
+                >
+                  CareerPages
                 </Link>
               </div>
             </div>
-
-           
           </nav>
         )}
       </div>

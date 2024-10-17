@@ -32,12 +32,13 @@ const Footer = (props: Props) => {
               LandJobber
             </Link>
             <p className="mt-5 text-sm text-black font-semibold xl:ml-6 xl:mt-0">
-              © Copyright 2024 Aura UI
+              © Copyright 2024 LandJobber
             </p>
+            
           </div>
 
-          <div className="items-center mt-8 xl:mt-0 xl:flex xl:justify-end xl:space-x-8">
-            <div className="hidden mr-6 lg:flex lg:items-center lg:ml-auto lg:space-x-10">
+          <div className="items-center mt-8  xl:mt-0 xl:flex xl:justify-end xl:space-x-8">
+            <div className=" mr-6 flex flex-col  gap-3 lg:items-center lg:ml-auto lg:space-x-10">
               <Link href="/" className={styles.link} title="Features">
                 Home
               </Link>
