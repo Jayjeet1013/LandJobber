@@ -1,130 +1,82 @@
-import {
-  Box,
-  Container,
-  Text,
-  Flex,
-  Link,
-  Button,
-  Image,
-} from "@chakra-ui/react";
-import React from "react";
-import { AiOutlineMenu } from "react-icons/ai";
-import { AiOutlineClose } from "react-icons/ai";
-import { useState } from "react";
+import React, { useState } from "react";
+import { FiMenu, FiX } from "react-icons/fi";
+import Link from "next/link";
+import Image from "next/image";
+
+const styles = {
+  link: "text-xl font-medium text-black transition-all duration-200 hover:text-green-600 focus:text-green-600",
+  mobileLink:
+    "inline-flex py-2 text-base font-medium text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600",
+};
 
 const Nav = () => {
-  const [menu, setMenu] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
-    setMenu(!menu);
+    setIsMenuOpen(!isMenuOpen);
   };
 
   return (
-    <Box bg={"gray"} position="fixed" zIndex={100} width="100%">
-      <Container maxW={1300}>
-        <Flex
-          as="nav"
-          align="center"
-          justify="space-between"
-          wrap="wrap"
-          py="8px"
-          px={2}
-          color="white"
-        >
-          <Link href="/" className="text-[24px] font-semibold  " _hover={{ color: "yellow", textDecoration: "none" }}>JobYard</Link>
+    <header className="pb-6 bg-white lg:pb-0 border-b-2 border-dashed border-green-600 ">
+      <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+        {/* lg+ */}
+        <nav className="flex items-center justify-between h-16 lg:h-20">
+          <div className="flex-shrink-0">
+            <Link href="/" title="LandJobber" className="text-[30px] shadow-lg hover:shadow-green-400 shadow-red-500 px-2 rounded-md font-semibold flex">
+              LandJobber
+            </Link>
+          </div>
 
-          <Flex
-            color={"white"}
-            alignItems="center"
-            gap={10}
-            justifyContent="center"
-            display={{ base: "none", md: "flex" }}
+          <button
+            type="button"
+            className="inline-flex p-2 text-black transition-all duration-200 rounded-md lg:hidden focus:bg-gray-100 hover:bg-gray-100"
+            onClick={toggleMenu}
           >
-            <Link href="/" _hover={{ color: "yellow", textDecoration: "none" }}>
-              {" "}
-              <Text>Home</Text>
-            </Link>
-            <Link href="/JobPlatform" _hover={{ color: "yellow", textDecoration: "none" }}>
-              <Text>JobsPlatform</Text>
-            </Link>
-           
-          
-            <Link href="/#contact" _hover={{ color: "yellow", textDecoration: "none" }}>
-              <Text>Contact</Text>
-            </Link>
-        
-{/* 
-            <Box color={"yellow.800"}>
-              <Button
-                p={6}
-                color="yellow"
-                _hover={{ bgColor: "yellow", color: "black" }}
-                border={"2px solid yellow"}
-                bgColor={"transparent"}
-              >
-                Get Started
-              </Button>
-            </Box> */}
-          </Flex>
-
-          <Box display={{ base: "flex", md: "none" }} onClick={toggleMenu}>
-            {menu ? (
-              <AiOutlineClose style={{ color: "yellow", fontSize: 32 }} />
+            {isMenuOpen ? (
+              <FiX className="w-6 h-6" />
             ) : (
-              <AiOutlineMenu style={{ color: "yellow", fontSize: 32 }} />
+              <FiMenu className="w-6 h-6" />
             )}
-          </Box>
-        </Flex>
-      </Container>
-      <Box
-        w={"full"}
-        bg={"#1a1d24"}
-        px={8}
-        pb={4}
-        pt={2}
-        display={{ base: menu ? "block" : "none", md: "none" }}
-      >
-        <Flex
-          color={"white"}
-          gap={4}
-          justifyContent="start"
-          direction={"column"}
-          display={{ base: "flex", md: "none" }}
-        >
-          <Link _hover={{ color: "yellow", textDecoration: "none" }}>
-            {" "}
-            <Text>Home</Text>
-          </Link>
-          <Link _hover={{ color: "yellow", textDecoration: "none" }}>
-            <Text>Pages</Text>
-          </Link>
-          <Link _hover={{ color: "yellow", textDecoration: "none" }}>
-            <Text>Use cases</Text>
-          </Link>
-          <Link _hover={{ color: "yellow", textDecoration: "none" }}>
-            <Text>Pricing</Text>
-          </Link>
-          <Link _hover={{ color: "yellow", textDecoration: "none" }}>
-            <Text>Contact</Text>
-          </Link>
-          <Link _hover={{ color: "yellow", textDecoration: "none" }}>
-            <Text>Login</Text>
-          </Link>
+          </button>
 
-          <Box color={"yellow.800"} pt={2}>
-            <Button
-              p={6}
-              color="yellow"
-              _hover={{ bgColor: "yellow", color: "black" }}
-              border={"2px solid yellow"}
-              bgColor={"transparent"}
-            >
-              Get Started
-            </Button>
-          </Box>
-        </Flex>
-      </Box>
-    </Box>
+          <div className="hidden mr-6 lg:flex lg:items-center lg:ml-auto lg:space-x-10">
+            <Link href="/" className={styles.link} title="Features">
+              Home
+            </Link>
+            <Link href="/jobplatform" className={styles.link} title="Solutions">
+              JobPlatforms
+            </Link>
+            <Link href="/careerpages" className={styles.link} title="Resources">
+              CareerPages
+            </Link>
+          </div>
+        </nav>
+
+        {/* xs to lg */}
+        {isMenuOpen && (
+          <nav className="pt-4 pb-6 bg-white border border-gray-200 rounded-md shadow-md lg:hidden">
+            <div className="flow-root">
+              <div className="flex flex-col px-6 -my-2 space-y-1">
+                <Link href="#" className={styles.mobileLink} title="Features">
+                  Features
+                </Link>
+                <Link href="#" className={styles.mobileLink} title="Solutions">
+                  Solutions
+                </Link>
+                <Link href="#" className={styles.mobileLink} title="Resources">
+                  Resources
+                </Link>
+                <Link href="#" className={styles.mobileLink} title="Pricing">
+                  Pricing
+                </Link>
+              </div>
+            </div>
+
+           
+          </nav>
+        )}
+      </div>
+    </header>
   );
 };
 
