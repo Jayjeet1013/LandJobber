@@ -80,12 +80,6 @@ function Hero31({}: Props) {
           </div>
         </div>
       </section>
-      <script
-        async
-        data-cfasync="false"
-        src="//pl26295289.effectiveratecpm.com/088f855199785ece318dc84a923a2938/invoke.js"
-      ></script>
-      <div id="container-088f855199785ece318dc84a923a2938"></div>
     </div>
   );
 }
