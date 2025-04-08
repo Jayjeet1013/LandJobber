@@ -75,7 +75,11 @@ export default function Home() {
             }),
           }}
         />
-        
+
+        <script
+          type="text/javascript"
+          src="//pl26295256.profitableratecpm.com/12/79/a1/1279a17b3b73f443a8d470fe42be2ee8.js"
+        ></script>
       </Head>
 
       <div>
