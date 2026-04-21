@@ -498,4 +498,10 @@ export const Data = [
     link: "https://in.indeed.com/?from=gnav-homepage",
     description: "Post your resume - It only takes a few seconds",
   },
+  {
+    id: 81,
+    companyName: "theBFF",
+    link: "https://www.theblackfemaleengineer.com/jobs",
+    description: "Find your next opportunity",
+  },
 ];
