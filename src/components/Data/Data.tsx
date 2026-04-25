@@ -504,4 +504,10 @@ export const Data = [
     link: "https://www.theblackfemaleengineer.com/jobs",
     description: "Find your next opportunity",
   },
+  {
+    id: 82,
+    companyName: "f6s",
+    link: "https://www.f6s.com/",
+    description: "Get to full strength to connect with opportunities",
+  },
 ];
